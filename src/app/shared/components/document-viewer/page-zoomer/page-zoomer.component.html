@@ -1,0 +1,52 @@
+<div class="page-zoomer">
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        [disabled]="!canZoomOut"
+        (click)="zoomOut()"
+    >
+        <tui-icon
+            class="icon"
+            icon="minus"
+        />
+    </button>
+
+    <div class="range-wrapper">
+        <input
+            size="m"
+            tuiSlider
+            type="range"
+            [(ngModel)]="value"
+            [min]="min()"
+            [max]="max()"
+            [step]="step()"
+            [segments]="segments"
+        />
+
+        <div class="ticks-labels">
+            @for (label of labels(); track label) {
+            <button
+                type="button"
+                class="tick-label"
+                (click)="setZoom(label)"
+            >
+                {{ label }}
+            </button>
+            }
+        </div>
+    </div>
+
+    <button
+        size="xs"
+        tuiButton
+        type="button"
+        [disabled]="!canZoomIn"
+        (click)="zoomIn()"
+    >
+        <tui-icon
+            class="icon"
+            icon="plus"
+        />
+    </button>
+</div>

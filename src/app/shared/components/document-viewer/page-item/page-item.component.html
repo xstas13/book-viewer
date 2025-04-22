@@ -1,0 +1,86 @@
+@if (loaded) {
+<div
+    class="page-item"
+    #pageItemRoot
+>
+    @for (comment of comments; track comment.id) {
+    <app-page-item-comment
+        [comment]="comment"
+        [offsetX]="pageItemRoot.offsetLeft"
+        [offsetY]="pageItemRoot.offsetTop"
+        [zoom]="zoom()"
+        [style.left]="positionPercentX(comment.position[0]) + '%'"
+        [style.top]="positionPercentY(comment.position[1]) + '%'"
+        (clickDelete)="commentDelete($event)"
+    ></app-page-item-comment>
+    }
+
+    <div
+        class="comment-edit"
+        [class.show]="commentEditShow"
+        [style.left]="commentEditPosition[0] + 'px'"
+        [style.top]="commentEditPosition[1] + 'px'"
+    >
+        <tui-textfield tuiTextfieldSize="s">
+            <textarea
+                placeholder="Комментарий"
+                tuiTextarea
+                #textareaCommentEdit
+                [(ngModel)]="commentEditText"
+                (focusout)="focusOutCommentEdit()"
+            ></textarea>
+        </tui-textfield>
+    </div>
+
+    <img
+        [src]="pageImageUrl"
+        [style.width]="styleWidth"
+        tuiDropdownContext
+        [tuiDropdown]="contentMenu"
+        (contextmenu)="rightClickHandler($event)"
+    >
+</div>
+}
+
+<input
+    type="file"
+    class="file-input"
+    accept="image/*"
+    (change)="fileSelectedHandler($event)"
+    #fileUpload
+>
+
+<ng-template
+    #contentMenu
+    let-close
+>
+    <tui-data-list
+        role="menu"
+        tuiDataListDropdownManager
+        class="context-menu"
+    >
+        <button
+            tuiOption
+            type="button"
+            (click)="contentMenuComment(); close()"
+        >
+            Комментарий
+            <tui-icon
+                class="icon"
+                icon="message-square-diff"
+            />
+        </button>
+
+        <button
+            tuiOption
+            type="button"
+            (click)="fileUpload.click(); close()"
+        >
+            Изображение
+            <tui-icon
+                class="icon"
+                icon="image-plus"
+            />
+        </button>
+    </tui-data-list>
+</ng-template>

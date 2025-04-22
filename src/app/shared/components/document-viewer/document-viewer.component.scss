@@ -1,0 +1,30 @@
+$page-margin: 1rem;
+
+header {
+    .right-block {
+        display: flex;
+        align-items: center;
+
+        app-page-zoomer {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.pages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--tui-background-neutral-2);
+    min-height: 100vh;
+    padding-bottom: $page-margin;
+    overflow-x: hidden;
+
+    .page-item {
+        margin-top: $page-margin;
+    }
+
+    tui-loader {
+        margin-top: 3rem;
+    }
+}

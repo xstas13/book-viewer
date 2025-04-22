@@ -1,0 +1,61 @@
+$cooment-bg-color: rgba(255, 255, 0, 0.5);
+$comment-padding: 5px;
+$comment-border-radius: $comment-padding;
+
+.comment {
+    position: relative;
+
+    .button-delete {
+        position: absolute;
+        z-index: 2;
+        left: -5px;
+        top: -5px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: black;
+        color: white;
+        cursor: pointer;
+
+        .icon {
+            font-size: 10px;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .comment-text {
+        position: absolute;
+        z-index: 1;
+        background-color: $cooment-bg-color;
+        padding: $comment-padding;
+        border-radius: $comment-border-radius;
+        cursor: default;
+
+        >div {
+            line-height: normal;
+            white-space: nowrap;
+        }
+    }
+
+    .comment-image {
+        position: absolute;
+        z-index: 1;
+        background-color: $cooment-bg-color;
+        padding: $comment-padding;
+        border-radius: $comment-border-radius;
+        cursor: default;
+
+        >img {
+            display: block;
+            opacity: 0.8;
+        }
+    }
+}

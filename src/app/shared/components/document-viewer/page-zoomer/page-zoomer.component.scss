@@ -1,0 +1,22 @@
+@use '@taiga-ui/core/styles/taiga-ui-local.scss' as *;
+
+.page-zoomer {
+    display: flex;
+    align-items: center;
+
+    .range-wrapper {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+.ticks-labels {
+    @include tui-slider-ticks-labels(m);
+}
+ 
+.tick-label {
+    @include button-clear();
+ 
+    outline: 0;
+    cursor: pointer;
+}

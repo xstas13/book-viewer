@@ -1,0 +1,32 @@
+<div
+    class="comment"
+    (mousedown)="mousedownComment($event)"
+>
+    <div
+        class="button-delete"
+        (click)="clickDelete.emit(comment()!.id)"
+    >
+        <tui-icon
+            class="icon"
+            icon="x"
+        />
+    </div>
+
+    @if (comment()?.type === 'TEXT') {
+    <div class="comment-text">
+        <div
+            [style.font-size]="zoomOut(comment()!.dimension[0]) + 'px'"
+            [innerHTML]="comment()!.data | enterToBr"
+        ></div>
+    </div>
+    }
+
+    @if (comment()?.type === 'IMAGE') {
+    <div class="comment-image">
+        <img
+            [src]="comment()!.data"
+            [style.width]="zoomOut(comment()!.dimension[0]) + 'px'"
+        >
+    </div>
+    }
+</div>

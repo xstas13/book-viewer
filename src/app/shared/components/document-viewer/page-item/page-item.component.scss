@@ -1,0 +1,35 @@
+$cooment-bg-color: rgba(255, 255, 0, 0.5);
+$comment-padding: 5px;
+$comment-border-radius: $comment-padding;
+
+.page-item {
+    position: relative;
+
+    app-page-item-comment {
+        position: absolute;
+        z-index: 1;
+    }
+}
+
+.comment-edit {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    min-width: 150px;
+    background-color: $cooment-bg-color;
+    padding: $comment-padding;
+    border-radius: $comment-border-radius;
+
+    &.show {
+        display: block;
+    }
+}
+
+.file-input {
+    display: none;
+}
+
+.icon {
+    border-width: 0.05rem;
+    margin-left: 0.5rem;
+}

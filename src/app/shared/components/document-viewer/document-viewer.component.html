@@ -1,0 +1,44 @@
+<header tuiNavigationHeader>
+    <span tuiNavigationLogo>
+        @if (documentResp?.loading) {
+        Loading...
+        } @else {
+        {{documentResp?.data?.name}}
+        }
+    </span>
+
+    <hr />
+
+    @if (!documentResp?.loading && documentResp?.data?.pages?.length) {
+    <div class="right-block">
+        <app-page-zoomer [(value)]="zoom"></app-page-zoomer>
+
+        <button
+            size="xs"
+            tuiButton
+            type="button"
+            [loading]="saveDocumentCommentsResp?.loading || false"
+            (click)="saveDocumentComments()"
+        >
+            Save
+        </button>
+    </div>
+    }
+</header>
+
+<div class="pages">
+    <tui-error [error]="documentResp?.error || null" />
+    <tui-error [error]="saveDocumentCommentsResp?.error || null" />
+
+    @if (documentResp?.loading) {
+    <tui-loader />
+    }
+
+    @for (page of documentResp?.data?.pages; track page.number) {
+    <app-page-item
+        class="page-item"
+        [pageItem]="page"
+        [zoom]="zoom"
+    ></app-page-item>
+    }
+</div>
