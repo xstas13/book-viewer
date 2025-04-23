@@ -1,59 +1,49 @@
 # BookViewer
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+BookViewer — Это Web приложение для просмотра документов и добавления аннотаций.
 
-## Development server
+![Screenshot 1](/screenshots/screenshot_1.png)
 
-To start a local development server, run:
+Для реализации, были выбраны: фреймворк [Angular](https://angular.dev) 19 (стабильная версия) + [Taiga UI](https://taiga-ui.dev).
 
-```bash
-ng serve
+## Преимущества использования Angular:
+
+- Модульная архитектура — Angular основан на модульной архитектуре, что позволяет организовывать код в отдельные модули, упрощая его поддержку и повторное использование.
+- Поддержка TypeScript — приложение использует TypeScript, что обеспечивает статическую типизацию, улучшает читаемость кода и помогает выявлять ошибки на этапе компиляции.
+- Кросплатформенность. Совместимость с фреймворками вроде Ionic и NativeScript для создания кроссплатформенных мобильных приложений
+- Тестирование. Встроенные инструменты для юнит-тестов (Jasmine, Karma). Возможность тестировать компоненты изолированно.
+- Безопасность. Автоматическая санитизация данных для защиты от XSS-атак. Поддержка Content Security Policy (CSP).
+- Сообщество и поддержка. Долгосрочная поддержка компанией Google и регулярные обновления.
+
+## Преимущества использования Taiga UI:
+- Современный дизайн. Taiga UI основан на принципах Material Design и других современных дизайнерских подходах, что позволяет создавать эстетически привлекательные и удобные интерфейсы.
+- Готовые компоненты. Библиотека предоставляет широкий набор готовых компонентов (кнопки, формы, таблицы, модальные окна и др.), что ускоряет процесс разработки и уменьшает необходимость в создании компонентов с нуля.
+- Промстота интеграции.Taiga UI легко интегрируется в существующие проекты на Angular, что позволяет разработчикам быстро добавлять новые элементы интерфейса без значительных изменений в коде.
+- Адаптивность. Компоненты библиотеки адаптированы для работы на различных устройствах и экранах, обеспечивая отзывчивый дизайн.
+- Оптимизация производительности. Компоненты библиотеки оптимизированы для высокой производительности, что способствует быстрому рендерингу интерфейса.
+- Совместимость с Angular. Taiga UI полностью совместим с последними версиями Angular, что обеспечивает стабильную работу и доступ к новым функциям фреймворка.
+
+## Минусы использования Angular
+- Сложный фреймворк для новичков.
+- Проблемы с SEO – сложности при настройке SSR
+
+## Известные проблемы и способы решения
+- Аннотации выходят за границы текущей страницы. Нужно добавить ограничения по краям страницы при переносе аннотаций.
+- Аннотации с картинками добавляются в фиксированном размере. Для них нужно добавить ресайзер.
+- Документ может содержать много страниц – это замедлит работу приложения. Добавить ленивую загрузку страниц документа (картинок).
+- Во время сохранения не блокируется интерфейс. Нужно добавить блокировку интерфейса, чтобы добавления аннотаций и зума, во время сохранения было недоступно пользователю.
+
+### Установка зависимостей
+```sh
+pnpm install
+```
+или
+```sh
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Запуск сервера для разработки
 
 ```bash
-ng generate component component-name
+npm start
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
