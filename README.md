@@ -43,7 +43,17 @@ npm install
 ```
 
 ### Запуск сервера для разработки
-
 ```bash
 npm start
 ```
+
+### Сборка образа Docker
+```bash
+docker build -t xstas13/book-viewer .
+```
+
+### Запуск контейнера Docker
+```bash
+docker run -it --rm -p 8080:80 --name book-viewer-1 xstas13/book-viewer
+```
+Открыть в браузере [http://localhost:8080](http://localhost:8080)
